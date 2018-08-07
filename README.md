@@ -46,24 +46,24 @@ RUN npm install --no-cache
 
 ```
 
+## Herokuへデプロイ
+Herokuのコンソールより、以下の環境変数を登録しておく
+https://ja.nuxtjs.org/faq/heroku-deployment/
 
-> My spectacular Nuxt.js project
-
-## Build Setup
-
-``` bash
-# install dependencies
-$ yarn install
-
-# serve with hot reload at localhost:3000
-$ yarn run dev
-
-# build for production and launch server
-$ yarn run build
-$ yarn start
-
-# generate static project
-$ yarn run generate
+あとはいつも通り、push
+```sh
+git push heroku master
 ```
 
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+また、.envをHerokuでも使えるように、以下のプラグインをインストールしておく。
+```sh
+heroku plugins:install heroku-config
+```
+
+.env用意したら、以下のコマンドで反映できる
+```sh
+heroku config:push
+```
+
+ただ、上記コマンドを実行したときに、環境変数はかわってたんだけれども、アプリ側で.envの設定値が読めてなかった。  
+再度、適当にpushしたら反映されたので、なにかあるのかな。
