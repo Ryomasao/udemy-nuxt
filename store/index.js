@@ -68,8 +68,6 @@ const createStore = () => {
         vuexContext.commit('setPosts', posts)
       },
       authenticateUser(vuexContext, authData) {
-        console.log(process.env.API_KEY);
-        console.log(process.env.fbAPIKey);
         let authUrl = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=' + process.env.fbAPIKey;
 
         if(!authData.isLogin) {
